@@ -9,17 +9,17 @@ import java.time.LocalDate;
 @Builder
 @EqualsAndHashCode(of = {"id"})
 public class Film {
-    Long id;
+    private Long id;
 
     @NotBlank(message = "Название должно быть заполнено")
-    String name;
+    private String name;
 
     @Size(max = 200, message = "Описание не должно быть длиннее 200 символов")
-    String description;
+    private String description;
 
     @NotNull(message = "Дата релиза должна быть указна")
-    LocalDate releaseDate;
+    private LocalDate releaseDate;
 
     @Min(value = 1, message = "Продолжительность фильма должна быть положительным числом")
-    int duration;
+    private int duration;
 }

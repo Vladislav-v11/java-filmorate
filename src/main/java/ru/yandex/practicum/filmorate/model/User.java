@@ -14,17 +14,17 @@ import java.time.LocalDate;
 @Builder
 @EqualsAndHashCode(of = {"email"})
 public class User {
-    Long id;
+    private Long id;
 
     @NotBlank(message = "Адрес электронной почты должен быть указан")
     @Email(message = "Электронная почта должна быть формата электронного адреса")
-    String email;
+    private String email;
 
     @NotBlank
     @Pattern(regexp = "\\S+", message = "Логин не должен содержать пробелы")
-    String login;
-    String name;
+    private String login;
+    private String name;
 
     @PastOrPresent(message = "Дата рождения не может быть в будущем")
-    LocalDate birthday;
+    private LocalDate birthday;
 }
