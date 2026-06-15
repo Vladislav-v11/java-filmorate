@@ -41,14 +41,9 @@ public class InMemoryUserStorage implements UserStorage {
 
     @Override
     public Optional<User> getUserById(Long id) {
-        User user = users.get(id);
-        if (user == null) {
-            log.debug("Пользователь с ID {} не найден", id);
-        }
-        return Optional.ofNullable(user);
+        return Optional.ofNullable(users.get(id));
     }
 
-    @Override
     public void deleteUser(Long id) {
         if (users.remove(id) != null) {
             log.info("Удален пользователь с ID: {}", id);

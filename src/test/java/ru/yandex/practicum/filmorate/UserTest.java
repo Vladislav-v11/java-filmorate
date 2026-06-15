@@ -22,11 +22,10 @@ public class UserTest {
     }
 
     private User createValidUser() {
-        User user = User.builder()
-                .email("valid@email")
-                .login("login")
-                .birthday(LocalDate.of(2000, 1, 1))
-                .build();
+        User user = new User();
+                user.setEmail("valid@email");
+                user.setLogin("login");
+                user.setBirthday(LocalDate.of(2000, 1, 1));
         return user;
     }
 

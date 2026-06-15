@@ -33,7 +33,10 @@ public class UserController {
     @PostMapping
     public User createUser(@Valid @RequestBody User user) {
         log.info("POST /users - создание пользователя: {}", user.getLogin());
-        return userService.createUser(user);
+        //return userService.createUser(user);
+        User createdUser = userService.addUser(user);
+        log.info("Пользователь успешно создан с id: {}", createdUser.getId());
+        return createdUser;
     }
 
     @PutMapping
@@ -74,7 +77,16 @@ public class UserController {
 
     @GetMapping
     public Collection<User> getAllUsers() {
-        log.info("GET /users - получение всех пользователей");
-        return userService.findAllUsers();
+        log.info("Получен запрос на получение всех пользователей");
+        Collection<User> users = userService.getAllUsers();
+        log.info("Возвращено {} пользователей", users.size());
+        return users;
+    }
+
+    @PutMapping("/{id}/friends/{friendId}/accept")
+    public void acceptFriend(@PathVariable @Positive Long id,
+                             @PathVariable @Positive Long friendId) {
+        log.info("PUT /users/{}/friends/{}/accept - подтверждение дружбы", id, friendId);
+        userService.acceptFriend(id, friendId);
     }
 }
