@@ -68,6 +68,7 @@ public class FriendRepository {
                 "WHERE f1.user_id = ? AND f2.user_id = ?";
         return jdbcTemplate.query(sql, this::mapRowToUser, userId, otherUserId);
     }
+
     private User mapRowToUser(ResultSet rs, int rowNum) throws SQLException {
         User user = new User();
         user.setId(rs.getLong("user_id"));
