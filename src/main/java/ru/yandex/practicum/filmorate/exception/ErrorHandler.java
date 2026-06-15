@@ -35,13 +35,13 @@ public class ErrorHandler {
     @ExceptionHandler(NotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public Map<String, String> handleNotFoundException(NotFoundException e) {
-        log.error("Отсутствуют заправшиваемые данные: {}", e.getMessage());
+        log.error("Отсутствуют запрашиваемые данные: {}", e.getMessage());
         return Map.of("error", e.getMessage());
     }
 
     @ExceptionHandler(Throwable.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public Map<String, String> handleThrowable(final Throwable e) {
+    public Map<String, String> handleThrowable(final Exception e) {
         log.error("Произошла непредвиденная ошибка: ", e);
 
         return Map.of(
