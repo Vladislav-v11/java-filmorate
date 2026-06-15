@@ -25,12 +25,11 @@ public class FilmTest {
     }
 
     private Film createValidFilm() {
-        Film validFilm = Film.builder()
-                .name("Valid film")
-                .description("description")
-                .releaseDate(LocalDate.of(2000, 1, 1))
-                .duration(100)
-                .build();
+        Film validFilm = new Film();
+        validFilm.setName("Valid film");
+        validFilm.setDescription("description");
+        validFilm.setReleaseDate(LocalDate.of(2000, 1, 1));
+        validFilm.setDuration(100);
         return validFilm;
     }
 

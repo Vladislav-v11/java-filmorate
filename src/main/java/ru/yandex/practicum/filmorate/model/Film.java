@@ -4,9 +4,10 @@ import jakarta.validation.constraints.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
-@Builder
 @EqualsAndHashCode(of = {"id"})
 public class Film {
     private Long id;
@@ -22,4 +23,6 @@ public class Film {
 
     @Min(value = 1, message = "Продолжительность фильма должна быть положительным числом")
     private int duration;
+
+    private Set<Long> likes = new HashSet<>();
 }
